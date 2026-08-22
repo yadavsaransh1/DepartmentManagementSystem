@@ -1,0 +1,1271 @@
+/* ==========================================================================
+   COMPREHENSIVE MOBILE RESPONSIVE STYLES
+   Ensures all UI elements are properly displayed on mobile devices
+   ========================================================================== */
+
+/* ========== GLOBAL DESKTOP TABLE FIX ========== */
+@media (min-width: 1025px) {
+  /* Desktop table spacing fix - make table wider */
+  table {
+    width: 100% !important;
+    
+    border-collapse: collapse;
+    table-layout: auto;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  table tbody tr {
+    border-bottom: 1px solid #ddd;
+  }
+
+  table th {
+    padding: 14px 12px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: #3a21df;
+    white-space: nowrap;
+  }
+
+  table td {
+    padding: 12px 12px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  /* Remove container padding overflow for tables */
+  .table-container {
+    width: 100% !important;
+    overflow-x: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  .table-wrapper {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+
+  /* Widen attendance container */
+  .attendance-container {
+    max-width:58% !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* ========== GLOBAL MOBILE IMPROVEMENTS ========== */
+@media (max-width: 768px) {
+  /* Viewport and overflow handling */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Text wrapping and overflow prevention */
+  * {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Headings */
+  h1 { font-size: 1.5em; }
+  h2 { font-size: 1.3em; }
+  h3 { font-size: 1.1em; }
+  h4, h5, h6 { font-size: 1em; }
+
+  /* Links and buttons */
+  a, button, [role="button"] {
+    min-height: 44px;
+    text-emphasis-color: transparent;
+  }
+
+  /* Images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Lists */
+  li {
+    word-wrap: break-word;
+  }
+
+  /* Table responsive styling for tablets (768px and below) */
+  table,
+  .attendance-table {
+    width: auto !important;
+    min-width: 100% !important;
+    border-collapse: collapse !important;
+    table-layout: fixed !important;
+    display: table !important;
+    font-size: 11px;
+    box-sizing: border-box;
+  }
+
+  table thead,
+  .attendance-table thead {
+    background-color: #3a21df;
+    display: table-header-group;
+    width: 130vw !important;
+  }
+
+  table th,
+  .attendance-table th {
+    padding: 12px !important;
+    text-align: center !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    display: table-cell !important;
+    color: white !important;
+    border: none !important;
+    box-sizing: border-box !important;
+    white-space: nowrap !important;
+    vertical-align: middle !important;
+    overflow: visible !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Column width definitions */
+  .attendance-table th:nth-child(1),
+  .attendance-table td:nth-child(1) {
+    width: 120px !important;
+    min-width: 120px !important;
+  }
+
+  .attendance-table th:nth-child(2),
+  .attendance-table td:nth-child(2) {
+    width: 120px !important;
+    min-width: 120px !important;
+  }
+
+  .attendance-table th:nth-child(3),
+  .attendance-table td:nth-child(3) {
+    width: 70px !important;
+    min-width: 70px !important;
+  }
+
+  .attendance-table th:nth-child(4),
+  .attendance-table td:nth-child(4) {
+    width: 70px !important;
+    min-width: 70px !important;
+  }
+
+  .attendance-table th:nth-child(5),
+  .attendance-table td:nth-child(5) {
+    width: 70px !important;
+    min-width: 70px !important;
+  }
+
+  .attendance-table th:nth-child(6),
+  .attendance-table td:nth-child(6) {
+    width: 80px !important;
+    min-width: 80px !important;
+  }
+
+  .attendance-table th:nth-child(1),
+  .attendance-table td:nth-child(1) {
+    text-align: left !important;
+  }
+
+  .attendance-table tbody {
+    display: table-row-group;
+    width: 100%;
+  }
+
+  .attendance-table tr {
+    display: table-row;
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+  }
+
+  .attendance-table td {
+    padding: 12px !important;
+    font-size: 11px !important;
+    display: table-cell !important;
+    text-align: center !important;
+    border: none !important;
+    box-sizing: border-box !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    vertical-align: middle !important;
+  }
+
+  .attendance-table td:nth-child(1) {
+    text-align: left !important;
+    white-space: normal !important;
+  }
+
+  .attendance-table td:nth-child(2) {
+    white-space: normal !important;
+  }
+
+  .attendance-table td:nth-child(6) {
+    width: 80px !important;
+    max-width: 80px !important;
+  }
+
+  /* Footer - Responsive for tablet and below 768px */
+  .footer {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 10px !important;
+    gap: 2px !important;
+    text-align: center !important;
+  }
+
+  .footer div {
+    /* text-align: center !important; */
+    flex: 0 !important;
+    width: 100% !important;
+    min-width: initial !important;
+  }
+
+  .footer div p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+    font-size: 12px !important;
+    line-height: 1.3 !important;
+  }
+
+  .header {
+  flex-direction: row !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+/* NEW */
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  width: 100%;
+  
+}
+
+.header-title {
+  font-size: 16px;
+  text-align: right;
+  position: static !important;
+  transform: none !important;
+  text-align: right;
+}
+
+.login-btn {
+  font-size: 12px;
+  padding: 6px 12px;
+  width: 260px;
+  border-radius: 10px;
+  /* width: auto !important; */
+
+}
+ .department-logo {
+    height: 60px;
+    width: 60px;
+    padding: 4px;
+    padding-left: 10px;
+  }
+}
+
+
+/* ========== SMALL MOBILE (480px and below) ========== */
+@media (max-width: 480px) {
+  /* Prevent horizontal scrolling */
+  body {
+    width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* Container adjustments */
+  .container,
+  .main-content,
+  .dashboard,
+  .admin-container,
+  .student-container,
+  .teacher-container {
+    width: 100% !important;
+    max-width: 100%;
+    padding: 6px !important;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  /* Form elements - critical for accessibility */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="date"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
+  select,
+  textarea {
+    width: 100% !important;
+    max-width: 100%;
+    padding: 12px !important;
+    font-size: 16px !important;
+    box-sizing: border-box !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    margin-bottom: 10px;
+  }
+
+  /* Select dropdowns */
+  select {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 20px;
+    padding-right: 30px !important;
+  }
+
+  /* Buttons */
+  button,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  a.btn,
+  .btn {
+    padding: 12px 5px !important;
+    min-height: 44px !important;
+    font-size: 14px !important;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    text-decoration: none;
+  }
+
+  /* Button groups */
+  .button-group,
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .button-group button,
+  .btn-group button {
+    width: 100%;
+  }
+
+  /* Tables - make them responsive on mobile */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    display: table;
+    font-size: 11px;
+    box-sizing: border-box;
+  }
+
+  table thead {
+    background-color: #3a21df;
+    display: table-header-group;
+    width: 100%;
+  }
+
+  table th {
+    padding: 12px !important;
+    text-align: center !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    display: table-cell !important;
+    color: white !important;
+    border: none !important;
+    box-sizing: border-box !important;
+    white-space: normal;
+    vertical-align: middle !important;
+    overflow: hidden !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Column width definitions - increased width for Student Name and Roll No */
+  table th:nth-child(1),
+  table td:nth-child(1) {
+    width: 16% ;
+  }
+
+  table th:nth-child(2),
+  table td:nth-child(2) {
+    width: 18% ;
+  }
+
+  table th:nth-child(3),
+  table td:nth-child(3) {
+    width: 20% ;
+  }
+
+  table th:nth-child(4),
+  table td:nth-child(4) {
+    width: 17.75% ;
+  }
+
+  table th:nth-child(5),
+  table td:nth-child(5) {
+    width: 15.75% ;
+  }
+
+  table th:nth-child(6),
+  table td:nth-child(6) {
+    width: 15.75% ;
+  }
+  table th:nth-child(7),
+  table td:nth-child(7) {
+    width: 13.75% ;
+  }
+
+  table th:nth-child(8),
+   table td:nth-child(8) {
+        width: 15.75% ;
+    }
+  table th:nth-child(1) {
+    text-align: left !important;
+  }
+
+  table td:nth-child(1) {
+    text-align: left !important;
+  }
+
+  table tbody {
+    display: table-row-group;
+    width: 100%;
+  }
+
+  table tr {
+    display: table-row;
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+  }
+
+  table td {
+    padding: 12px !important;
+    font-size: 11px !important;
+    display: table-cell !important;
+    text-align: center !important;
+    border: none !important;
+    box-sizing: border-box !important;
+    white-space: normal;
+    overflow: hidden !important;
+    vertical-align: middle !important;
+  }
+
+  table td:nth-child(1) {
+    text-align: left;
+    word-break: break-word;
+  }
+
+  table td:nth-child(2) {
+    word-break: break-word;
+  }
+
+.global-container{
+  width: 100% !important;
+  overflow-x: auto !important;
+  padding: 0px;
+}
+
+  /* ===== ROUTINE TABLE FIX ===== */
+.routine-timetable-container {
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* Reset global table styles */
+.routine-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 13px;
+}
+
+/* REMOVE global mobile breaking behavior */
+  .routine-table {
+    display: table !important;
+    min-width: 800px !important;
+    table-layout: fixed !important;
+    width: 100% !important;
+  }
+
+  .routine-table thead {
+    display: table-header-group !important;
+  }
+
+  .routine-table tbody {
+    display: table-row-group !important;
+  }
+
+  .routine-table tr {
+    display: table-row !important;
+  }
+
+  .routine-table th,
+  .routine-table td {
+    display: table-cell !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    text-align: center !important;
+    padding: 10px !important;
+    font-size: 11px !important;
+    width: calc(100% / 8) !important; /* adjust based on number of columns */
+  }
+
+/*Student Table fix*/
+.student-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 13px;
+}
+/* REMOVE global mobile breaking behavior */
+  .student-table {
+    display: table !important;
+    min-width: 800px !important;
+    table-layout: fixed !important;
+    width: 100% !important;
+  }
+  .student-table th:nth-child(1),
+  .student-table td:nth-child(1) {
+    width: 3% ;
+  }
+  .student-table thead {
+    display: table-header-group !important;
+  }
+  .student-table tbody {
+    display: table-row-group !important;
+  }
+  .student-table tr {
+    display: table-row !important;
+  }
+  .student-table th,
+  .student-table td {
+    display: table-cell !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    text-align: center !important;
+    padding: 10px !important;
+    font-size: 11px !important;
+  }
+
+  /*Teacher Table fix*/
+.teacher-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 13px;
+}
+/* REMOVE global mobile breaking behavior */
+  .teacher-table {
+    display: table !important;
+    min-width: 800px !important;
+    table-layout: fixed !important;
+    width: 100% !important;
+  }
+  .teacher-table thead {
+    display: table-header-group !important;
+  }
+  .teacher-table tbody {
+    display: table-row-group !important;
+  }
+  .teacher-table tr {
+    display: table-row !important;
+  }
+  .teacher-table th,
+  .teacher-table td {
+    display: table-cell !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    text-align: center !important;
+    padding: 10px !important;
+    font-size: 11px !important;
+  }
+
+  /*Course Table fix*/
+.course-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 13px;
+}
+/* REMOVE global mobile breaking behavior */
+  .course-table {
+    display: table !important;
+    min-width: 800px !important;
+    table-layout: fixed !important;
+    width: 100% !important;
+  }
+
+  .course-table thead {
+    display: table-header-group !important;
+  }
+
+  .course-table tbody {
+    display: table-row-group !important;
+  }
+
+  .course-table tr {
+    display: table-row !important;
+  }
+
+  .course-table th,
+  .course-table td {
+    display: table-cell !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    text-align: center !important;
+    padding: 10px !important;
+    font-size: 11px !important;
+  }
+
+  /*Document Table fix*/
+.document-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 13px;
+}
+/* REMOVE global mobile breaking behavior */
+  .document-table {
+    display: table !important;
+    min-width: 800px !important;
+    table-layout: fixed !important;
+    width: 100% !important;
+  }
+  .document-table thead {
+    display: table-header-group !important;
+  }
+
+  .document-table tbody {
+    display: table-row-group !important;
+  }
+
+  .document-table tr {
+    display: table-row !important;
+  }
+  .document-table th,
+  .document-table td {
+    display: table-cell !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    text-align: center !important;
+    padding: 10px !important;
+    font-size: 11px !important;
+  }
+
+  /*Document Table fix*/
+.dt-routine-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 13px;
+}
+/* REMOVE global mobile breaking behavior */
+  .dt-routine-table {
+    display: table !important;
+    min-width: 800px !important;
+    table-layout: fixed !important;
+    width: 100% !important;
+  }
+  .dt-routine-table thead {
+    display: table-header-group !important;
+  }
+
+  .dt-routine-table tbody {
+    display: table-row-group !important;
+  }
+
+  .dt-routine-table tr {
+    display: table-row !important;
+  }
+  .dt-routine-table th,
+  .dt-routine-table td {
+    display: table-cell !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    text-align: center !important;
+    padding: 10px !important;
+    font-size: 11px !important;
+  }
+
+
+  /*Notice Table fix*/
+.notices-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 13px;
+}
+/* REMOVE global mobile breaking behavior */
+  .notices-table {
+    display: table !important;
+    min-width: 800px !important;
+    table-layout: fixed !important;
+    width: 100% !important;
+  }
+  .notices-table thead {
+    display: table-header-group !important;
+  }
+
+  .notices-table tbody {
+    display: table-row-group !important;
+  }
+
+  .notices-table tr {
+    display: table-row !important;
+  }
+  .notices-table th,
+  .notices-table td {
+    display: table-cell !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    text-align: center !important;
+    padding: 10px !important;
+    font-size: 11px !important;
+  }
+
+  /*Marks Table fix*/
+.marks-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 13px;
+}
+/* REMOVE global mobile breaking behavior */
+  .marks-table {
+    display: table !important;
+    min-width: 800px !important;
+    table-layout: fixed !important;
+    width: 100% !important;
+  }
+  .marks-table thead {
+    display: table-header-group !important;
+  }
+
+  .marks-table tbody {
+    display: table-row-group !important;
+  }
+
+  .marks-table tr {
+    display: table-row !important;
+  }
+  .marks-table th,
+  .marks-table td {
+    display: table-cell !important;
+    white-space: normal;
+    word-break: break-word !important;
+    text-align: center !important;
+    padding: 10px !important;
+    font-size: 11px !important;
+  }
+
+  /*Attendence Table fix*/
+.attendence-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 13px;
+}
+/* REMOVE global mobile breaking behavior */
+  .attendence-table {
+    display: table !important;
+    min-width: 800px !important;
+    table-layout: fixed !important;
+    width: 100% !important;
+  }
+  .attendence-table thead {
+    display: table-header-group !important;
+  }
+
+  .attendence-table tbody {
+    display: table-row-group !important;
+  }
+
+  .attendence-table tr {
+    display: table-row !important;
+  }
+  .attendence-table th,
+  .attendence-table td {
+    display: table-cell !important;
+    white-space: normal;
+    word-break: break-word !important;
+    text-align: center !important;
+    padding: 10px !important;
+    font-size: 11px !important;
+  }
+  /*Study Material Table fix*/
+.studyM-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 13px;
+}
+/* REMOVE global mobile breaking behavior */
+  .studyM-table {
+    display: table !important;
+    min-width: 800px !important;
+    table-layout: fixed !important;
+    width: 100% !important;
+  }
+  .studyM-table thead {
+    display: table-header-group !important;
+  }
+
+  .studyM-table tbody {
+    display: table-row-group !important;
+  }
+
+  .studyM-table tr {
+    display: table-row !important;
+  }
+  .studyM-table th,
+  .studyM-table td {
+    display: table-cell !important;
+    white-space: normal;
+    word-break: break-word !important;
+    text-align: center !important;
+    padding: 10px !important;
+    font-size: 11px !important;
+  }
+
+.table-container1 {
+  width: 100%;
+  overflow-x: auto;   /* 🔥 THIS enables scroll */
+}
+  /*Mark Attendence Table fix*/
+.markAttendence-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 13px;
+}
+/* REMOVE global mobile breaking behavior */
+  .markAttendence-table {
+    display: table !important;
+    min-width: 380px !important;
+    table-layout: fixed !important;
+    width: 100% !important;
+  }
+  .markAttendence-table thead {
+    display: table-header-group !important;
+  }
+
+  .markAttendence-table tbody {
+    display: table-row-group !important;
+  }
+
+  .markAttendence-table tr {
+    display: table-row !important;
+  }
+  .markAttendence-table th,
+  .markAttendence-table td {
+    display: table-cell !important;
+    white-space: normal;
+    word-break: break-word !important;
+    text-align: center !important;
+    padding: 10px !important;
+    font-size: 11px !important;
+  }
+
+  /*Project Attendence Table fix*/
+
+.project-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 13px;
+
+}
+/* REMOVE global mobile breaking behavior */
+  .project-table {
+    display: table !important;
+    min-width: 580px !important;
+    table-layout: fixed !important;
+    width: 100% !important;
+  }
+  .project-table thead {
+    display: table-header-group !important;
+  }
+
+  .project-table tbody {
+    display: table-row-group !important;
+  }
+
+  .project-table tr {
+    display: table-row !important;
+  }
+  .project-table th,
+  .project-table td {
+    display: table-cell !important;
+    white-space: normal;
+    word-break: break-word !important;
+    text-align: center !important;
+    padding: 10px !important;
+    font-size: 11px !important;
+  }
+
+  /*Almirah Table fix*/
+
+.almirah-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 13px;
+
+}
+/* REMOVE global mobile breaking behavior */
+  .almirah-table {
+    display: table !important;
+    min-width: 580px !important;
+    table-layout: fixed !important;
+    width: 100% !important;
+  }
+  .almirah-table thead {
+    display: table-header-group !important;
+  }
+
+  .almirah-table tbody {
+    display: table-row-group !important;
+  }
+
+  .almirah-table tr {
+    display: table-row !important;
+  }
+  .almirah-table th,
+  .almirah-table td {
+    display: table-cell !important;
+    white-space: normal;
+    word-break: break-word !important;
+    text-align: center !important;
+    padding: 10px !important;
+    font-size: 11px !important;
+  }
+
+.alumni-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 13px;
+
+}
+/* REMOVE global mobile breaking behavior */
+  .alumni-table {
+    display: table !important;
+    min-width: 580px !important;
+    table-layout: fixed !important;
+    width: 100% !important;
+  }
+  .alumni-table thead {
+    display: table-header-group !important;
+  }
+
+  .alumni-table tbody {
+    display: table-row-group !important;
+  }
+
+  .alumni-table tr {
+    display: table-row !important;
+  }
+  .alumni-table th,
+  .alumni-table td {
+    display: table-cell !important;
+    white-space: normal;
+    word-break: break-word !important;
+    text-align: center !important;
+    padding: 10px !important;
+    font-size: 11px !important;
+  }
+
+
+
+
+  /* Footer - Responsive Layout */
+  .footer {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 10px !important;
+    gap: 2px !important;
+    text-align: center !important;
+  }
+
+  .footer div {
+    /* text-align: center !important; */
+    flex: 0 !important;
+    width: 100% !important;
+    min-width: initial !important;
+  }
+
+  .footer div p {
+    margin: 0 !important;
+    padding: 6px 0 !important;
+    font-size: 12px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Card layouts */
+  .card,
+  .panel,
+  .box,
+  .section {
+    padding: 12px !important;
+    margin-bottom: 12px;
+    border-radius: 4px;
+  }
+
+  /* Modals */
+  .modal,
+  .modal-content,
+  .dialog {
+    max-height: 95vh !important;
+    max-width: 100% !important;
+    width: calc(100% - 20px) !important;
+    overflow-y: auto;
+  }
+
+  /* Grid layouts */
+  .grid,
+  .form-grid,
+  .two-column,
+  .three-column {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+
+  /* Flex layouts */
+  .flex-row {
+    flex-direction: column !important;
+  }
+
+  .flex-between {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  /* Spacing adjustments */
+  .mt-1, .mt-2, .mt-3, .mt-4, .mt-5 { margin-top: 8px !important; }
+  .mb-1, .mb-2, .mb-3, .mb-4, .mb-5 { margin-bottom: 8px !important; }
+  .p-1, .p-2, .p-3, .p-4, .p-5 { padding: 8px !important; }
+
+  /* Text alignment */
+  .text-center { text-align: left; }
+  .text-right { text-align: left; }
+
+  /* Hide overflow content */
+  .overflow-hidden {
+    overflow: hidden !important;
+  }
+
+  .overflow-auto {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  /* Prevent absolute positioning issues */
+  .floating,
+  .sticky,
+  .fixed {
+    position: relative !important;
+  }
+
+  /* Navigation adjustments */
+  nav {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  nav a,
+  nav button {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Remove unnecessary margins on mobile */
+  .margin-auto {
+    margin: 0;
+  }
+
+  /* Text truncation prevention */
+  p, span, div, a, li {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Ensure visibility of all elements */
+  [hidden] {
+    display: none !important;
+  }
+
+  /* Z-index management for overlays */
+  .modal-overlay,
+  .modal,
+  .dropdown,
+  .tooltip {
+    z-index: 1000;
+  }
+
+  /* Notification styles */
+  .alert,
+  .notification,
+  .message,
+  .error,
+  .success {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+  }
+
+  /* Search boxes */
+  .search-box,
+  .search-input {
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* Filters */
+  .filter-box,
+  .filters {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .filter-box input,
+  .filter-box select,
+  .filters input,
+  .filters select {
+    width: 100%;
+  }
+
+  /* Prevent text cutoff in badges */
+  .badge,
+  .tag,
+  .label {
+    display: inline-block;
+    word-wrap: break-word;
+    padding: 4px 8px;
+    margin: 2px;
+  }
+
+  /* Upload areas */
+  .upload-area,
+  .dropzone {
+    width: 100%;
+    padding: 20px;
+    min-height: 80px;
+  }
+
+  /* Slider/range inputs */
+  input[type="range"] {
+    width: 100%;
+  }
+
+  /* Scrollbar improvements */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+/* ========== VERY SMALL DEVICES (320px and below) ========== */
+@media (max-width: 320px) {
+  body {
+    font-size: 13px;
+  }
+
+  h1 { font-size: 1.3em; }
+  h2 { font-size: 1.1em; }
+  h3 { font-size: 0.95em; }
+
+  input,
+  select,
+  textarea,
+  button {
+    font-size: 14px !important; /* Prevent zoom on iOS */
+    padding: 10px !important;
+  }
+
+  .container {
+    padding: 8px !important;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  table th,
+  table td {
+    padding: 8px 4px;
+    box-sizing: border-box;
+  }
+}
+
+/* ========== ORIENTATION-SPECIFIC ========== */
+@media (orientation: landscape) and (max-height: 500px) {
+  .navbar {
+    padding: 8px;
+  }
+
+  .navbar h1 {
+    font-size: 1em;
+  }
+
+  .main-content {
+    padding: 8px;
+  }
+}
+
+/* ========== PRINT STYLES ========== */
+@media print {
+  .no-print,
+  .navbar,
+  .sidebar,
+  button,
+  .filter-box,
+  .upload-area {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    font-size: 12pt;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  table, th, td {
+    border: 1px solid black;
+  }
+}

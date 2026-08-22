@@ -1,0 +1,85 @@
+/* Student Page Styles */
+.student-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.student-container h1 {
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.profile-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.profile-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.profile-card h2 {
+  color: #2c3e50;
+  font-size: 20px;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-card p {
+  font-size: 16px;
+  color: #333;
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-card strong {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3498db !important;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+/* Grid responsive */
+@media (max-width: 768px) {
+  .profile-card > div {
+    grid-template-columns: 1fr !important;
+  }
+}

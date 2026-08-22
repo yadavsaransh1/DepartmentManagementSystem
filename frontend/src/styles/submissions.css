@@ -1,0 +1,91 @@
+/* Submissions Styles */
+.submission-container {
+  padding: 20px;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  min-height: 100vh;
+}
+
+.submission-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.submission-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 28px;
+}
+
+.submissions-table {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.submissions-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.submissions-table thead {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.submissions-table th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.submissions-table td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.submissions-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-info {
+  background: #cfe2ff;
+  color: #084298;
+}
+
+.badge-success {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.badge-warning {
+  background: #fff3cd;
+  color: #664d03;
+}
+
+.badge-danger {
+  background: #f8d7da;
+  color: #842029;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 12px;
+  color: #999;
+}

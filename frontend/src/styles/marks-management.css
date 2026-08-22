@@ -1,0 +1,393 @@
+.marks-management-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: white;
+}
+
+.marks-header {
+  margin-bottom: 30px;
+  border-bottom: 3px solid #6366f1;
+  padding-bottom: 15px;
+}
+
+.marks-header h2 {
+  color: #333;
+  margin: 0 0 5px 0;
+  font-size: 28px;
+}
+
+.marks-header p {
+  color: #666;
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Alerts */
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border-left: 4px solid;
+  animation: slideIn 0.3s ease-out;
+}
+
+.alert-success {
+  background: #ecf7f1;
+  color: #0f5132;
+  border-color: #77dd77;
+}
+
+.alert-error {
+  background: #fef1f1;
+  color: #a91e2c;
+  border-color: #ff6b6b;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Filters Section */
+.filters-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.filter-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 14px;
+}
+
+.form-select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e9ecef;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.form-select:hover:not(:disabled) {
+  border-color: #6366f1;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.form-select:disabled {
+  background: #e9ecef;
+  cursor: not-allowed;
+  color: #999;
+}
+
+/* Form Section */
+.marks-form-section {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+  border: 1px solid #e9ecef;
+}
+
+.marks-form-section h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 20px;
+}
+
+.marks-section {
+  margin-bottom: 25px;
+}
+
+.marks-section h4 {
+  color: #555;
+  margin: 0 0 15px 0;
+  padding-bottom: 10px;
+  border-left: 4px solid #6366f1;
+  padding-left: 10px;
+  font-size: 16px;
+}
+
+.marks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+.mark-input-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #555;
+  font-size: 13px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #e9ecef;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.form-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #e9ecef;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Summary */
+.marks-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 20px;
+  background: #f0f4ff;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-item span:first-child {
+  color: #555;
+  font-weight: 500;
+}
+
+.summary-item .value {
+  font-weight: 700;
+  font-size: 18px;
+  color: #6366f1;
+}
+
+.summary-item .value.pass {
+  color: #10b981;
+}
+
+.summary-item .value.fail {
+  color: #ef4444;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: #6366f1;
+  color: white;
+  flex: 1;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #4f46e5;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.btn-primary:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #ef4444;
+  color: white;
+  flex: 1;
+}
+
+.btn-secondary:hover {
+  background: #dc2626;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+/* Marks List */
+.marks-list-section {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+}
+
+.marks-list-section h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 20px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.marks-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.marks-table thead {
+  background: #f8f9fa;
+}
+
+.marks-table th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.marks-table td {
+  padding: 15px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.marks-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.marks-table td.pass {
+  color: #10b981;
+  font-weight: 600;
+}
+
+.marks-table td.fail {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  padding: 5px;
+}
+
+.btn-icon:hover {
+  transform: scale(1.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .marks-management-container {
+    padding: 10px;
+  }
+
+  .filters-section {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .marks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .marks-summary {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .button-group {
+    flex-direction: column-reverse;
+  }
+
+  .marks-table {
+    font-size: 12px;
+  }
+
+  .marks-table th,
+  .marks-table td {
+    padding: 10px;
+  }
+
+  .marks-header h2 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .marks-management-container {
+    padding: 5px;
+  }
+
+  .marks-table th,
+  .marks-table td {
+    padding: 8px;
+  }
+
+  .marks-header h2 {
+    font-size: 18px;
+  }
+
+  .btn {
+    padding: 10px 15px;
+    font-size: 13px;
+  }
+}

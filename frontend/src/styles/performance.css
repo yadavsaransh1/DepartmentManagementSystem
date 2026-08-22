@@ -1,0 +1,118 @@
+/* Student Performance Styles */
+.performance-container {
+  padding: 20px;
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  min-height: 100vh;
+}
+
+.performance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.performance-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 28px;
+}
+
+.performance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.performance-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.performance-card:hover {
+  transform: translateY(-5px);
+}
+
+.performance-header-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(168, 237, 234, 0.2), rgba(254, 214, 227, 0.2));
+  border-left: 4px solid #a8edea;
+}
+
+.performance-header-card h3 {
+  margin: 0;
+  color: #333;
+}
+
+.performance-emoji {
+  font-size: 32px;
+}
+
+.gpa-display {
+  padding: 20px;
+  text-align: center;
+}
+
+.gpa-value {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gpa-number {
+  font-size: 48px;
+  font-weight: bold;
+  color: #667eea;
+}
+
+.gpa-label {
+  color: #666;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.performance-level {
+  padding: 10px;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  margin: 0 20px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.performance-detail {
+  padding: 15px 20px;
+  border-top: 1px solid #eee;
+}
+
+.performance-detail strong {
+  display: block;
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.performance-detail p {
+  color: #666;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.evaluation-date {
+  display: block;
+  padding: 15px 20px 10px 20px;
+  color: #999;
+  font-size: 12px;
+}

@@ -1,0 +1,338 @@
+/* Phi Chatbot Container */
+.phi-chat-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 380px;
+  height: 600px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16);
+  display: flex;
+  flex-direction: column;
+  z-index: 10000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: slideUp 0.3s ease-in-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Chat Header */
+.phi-chat-header {
+  padding: 12px 16px;
+  border-radius: 12px 12px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 50px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.phi-close-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  width: 50px;
+}
+
+.phi-close-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+/* Messages Container */
+.phi-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Welcome Message */
+.phi-welcome-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: #666;
+}
+
+.phi-welcome-message h3 {
+  margin: 10px 0 5px 0;
+  color: #333;
+  font-size: 18px;
+}
+
+.phi-welcome-message p {
+  margin: 5px 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* Messages */
+.phi-message {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.phi-message-user {
+  justify-content: flex-end;
+}
+
+.phi-message-assistant {
+  justify-content: flex-start;
+}
+
+.phi-message-icon {
+  font-size: 18px;
+  min-width: 24px;
+}
+
+.phi-message-bubble {
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 75%;
+  word-wrap: break-word;
+  line-height: 1.4;
+  font-size: 13px;
+}
+
+.phi-bubble-user {
+  background: #007bff;
+  color: white;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+}
+
+.phi-bubble-assistant {
+  background: white;
+  color: #333;
+  border: 1px solid #e0e0e0;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Typing Animation */
+.phi-typing {
+  padding: 10px 16px !important;
+}
+
+.phi-typing span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #999;
+  margin: 0 2px;
+  animation: typing 1.4s infinite;
+}
+
+.phi-typing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.phi-typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% {
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-6px);
+  }
+}
+
+/* Input Form */
+.phi-chat-input-form {
+  display: flex;
+  padding: 12px;
+  gap: 8px;
+  background: white;
+  border-top: 1px solid #e0e0e0;
+  border-radius: 0 0 12px 12px;
+}
+
+.phi-chat-input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 13px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.phi-chat-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.phi-chat-input:disabled {
+  background: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.phi-chat-send-btn {
+  padding: 8px 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+}
+
+.phi-chat-send-btn:hover:not(:disabled) {
+  background: #0056b3;
+  transform: scale(1.05);
+}
+
+.phi-chat-send-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .phi-chat-container {
+    width: calc(100% - 20px);
+    height: 80vh;
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+  }
+
+  .phi-message-bubble {
+    max-width: 90%;
+  }
+}
+
+/* HTML Content Styling (for markdown rendered in bubbles) */
+.phi-bubble-assistant ul,
+.phi-bubble-assistant ol {
+  margin: 8px 0;
+  padding-left: 24px;
+  line-height: 1.6;
+}
+
+.phi-bubble-assistant li {
+  margin: 4px 0;
+  list-style-position: outside;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.phi-bubble-assistant h3 {
+  margin: 10px 0 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a73e8;
+}
+
+.phi-bubble-assistant h4 {
+  margin: 8px 0 6px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+}
+
+.phi-bubble-assistant p {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.phi-bubble-assistant strong {
+  font-weight: 600;
+  color: #1a73e8;
+}
+
+.phi-bubble-assistant em {
+  font-style: italic;
+  color: #666;
+}
+
+.phi-bubble-assistant code {
+  background: #f0f0f0;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #d32f2f;
+}
+
+.phi-bubble-assistant a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.phi-bubble-assistant a:hover {
+  text-decoration: underline;
+}
+
+/* Ensure content stays within bubble bounds */
+.phi-message-bubble {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Scrollbar styling */
+.phi-chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.phi-chat-messages::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.phi-chat-messages::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.phi-chat-messages::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

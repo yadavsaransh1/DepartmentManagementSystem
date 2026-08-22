@@ -1,0 +1,407 @@
+.admin-routine-container {
+  padding: 24px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.admin-routine-container h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.message {
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.routine-form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group input[type="file"],
+.form-group input[type="text"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.form-group input[type="file"]:disabled,
+.form-group input[type="text"]:disabled,
+.form-group select:disabled,
+.form-group textarea:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.file-name {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #666;
+  font-style: italic;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.btn-upload {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-upload:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.btn-upload:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.routines-section {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.routines-section h3 {
+  color: #333;
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.no-data {
+  text-align: center;
+  color: #999;
+  padding: 40px 20px;
+  font-style: italic;
+}
+
+.routines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .routines-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.routine-card {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 16px;
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.routine-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.routine-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.routine-header h4 {
+  margin: 0;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+  word-break: break-word;
+  flex: 1;
+}
+
+.semester-badge {
+  background-color: #e7f3ff;
+  color: #0056b3;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.routine-meta {
+  font-size: 12px;
+  color: #666;
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+.routine-meta strong {
+  color: #333;
+}
+
+.routine-description {
+  font-size: 13px;
+  color: #555;
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.routine-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.btn-action {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-view {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.btn-view:hover {
+  background-color: #138496;
+}
+
+.btn-download {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-download:hover {
+  background-color: #218838;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+/* Upload Type Tabs */
+.upload-type-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.tab-btn {
+  padding: 12px 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+  margin-bottom: -2px;
+}
+
+.tab-btn:hover {
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.tab-btn.active {
+  color: #007bff;
+  border-bottom-color: #007bff;
+}
+
+.tab-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Excel Form Specific Styles */
+.excel-form {
+  background: #f8f9fa;
+}
+
+.excel-info {
+  background: #e7f3ff;
+  border: 1px solid #b3d9ff;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 20px;
+  color: #003366;
+}
+
+.excel-info h4 {
+  margin: 0 0 10px 0;
+  color: #003366;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.excel-info p {
+  margin: 8px 0;
+  font-size: 13px;
+}
+
+.excel-info ul {
+  margin: 10px 0;
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+.excel-info ul li {
+  margin: 6px 0;
+  font-size: 13px;
+  list-style: disc;
+  list-style-position: inside;
+}
+
+.excel-info .note {
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: 10px;
+  color: #856404;
+}
+
+/* File Input Wrapper - File input + Download button side by side */
+.file-input-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.file-input-wrapper input[type="file"] {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.btn-download-template {
+  padding: 10px 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.3s;
+}
+
+.btn-download-template:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.btn-download-template:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Excel Tips Section */
+.excel-tips {
+  background: #fff9e6;
+  border: 1px solid #ffe680;
+  border-radius: 6px;
+  padding: 12px;
+  margin-top: 12px;
+  color: #664d00;
+}
+
+.excel-tips h5 {
+  margin: 0 0 8px 0;
+  color: #664d00;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.excel-tips ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+.excel-tips ul li {
+  margin: 4px 0;
+  font-size: 12px;
+  list-style: disc;
+  list-style-position: inside;
+}
+
+.excel-tips ul li strong {
+  color: #333;
+}

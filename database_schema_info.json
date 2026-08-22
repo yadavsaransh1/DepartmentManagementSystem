@@ -1,0 +1,2832 @@
+{
+  "alumni": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "join_date",
+      "type": "date",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "marks",
+      "type": "float",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "pass_fail",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "passing_date",
+      "type": "date",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "program",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "semester",
+      "type": "int",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "updated_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "student_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "company",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "current_occupation",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "custom_fields",
+      "type": "longtext",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "assignment": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "description",
+      "type": "longtext",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "due_date",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "file_name",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "file_path",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "instructions",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "max_score",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "title",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "updated_at",
+      "type": "datetime(6)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "subject_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "teacher_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "assignment_submission": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "feedback",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "graded_at",
+      "type": "datetime(6)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "is_late",
+      "type": "bit(1)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "score",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "status",
+      "type": "enum('GRADED','LATE_SUBMITTED','NOT_SUBMITTED','SUBMITTED')",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "submission_file_name",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "submission_file_path",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "submission_text",
+      "type": "longtext",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "submitted_at",
+      "type": "datetime(6)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "updated_at",
+      "type": "datetime(6)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "assignment_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "student_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "user_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "attendance": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "student_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "subject_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "teacher_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "attendance_date",
+      "type": "date",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "status",
+      "type": "enum('PRESENT','ABSENT','LATE','LEAVE')",
+      "nullable": "YES",
+      "key": "",
+      "default": "ABSENT",
+      "extra": ""
+    },
+    {
+      "name": "remarks",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp",
+      "nullable": "YES",
+      "key": "MUL",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED"
+    },
+    {
+      "name": "attendance_time",
+      "type": "time(6)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "course_id",
+      "type": "bigint",
+      "nullable": "YES",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "attendance_settings": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "nq_criteria",
+      "type": "float",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "updated_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "certificates": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "certificate_name",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "description",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "download_count",
+      "type": "int",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "expiry_date",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "file_name",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "file_path",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "file_size",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "file_type",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "issued_date",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "issuer",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "updated_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "teacher_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "course_enrollment": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "enrollment_date",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "is_active",
+      "type": "bit(1)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "student_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "subject_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "courses": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "course_code",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "UNI",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "course_name",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "credits",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "program",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "semester",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "teacher_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "program_id",
+      "type": "bigint",
+      "nullable": "YES",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "course",
+      "type": "varchar(100)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "documents": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "document_code",
+      "type": "varchar(50)",
+      "nullable": "NO",
+      "key": "UNI",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "document_name",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "file_path",
+      "type": "varchar(500)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "file_size",
+      "type": "bigint",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "uploaded_by",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "visibility",
+      "type": "enum('PUBLIC','PRIVATE','RESTRICTED','COURSE')",
+      "nullable": "YES",
+      "key": "MUL",
+      "default": "PRIVATE",
+      "extra": ""
+    },
+    {
+      "name": "allowed_roles",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "allowed_user_ids",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "allowed_courses",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "category",
+      "type": "varchar(100)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "download_count",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": "0",
+      "extra": ""
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp",
+      "nullable": "YES",
+      "key": "",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED"
+    },
+    {
+      "name": "updated_at",
+      "type": "timestamp",
+      "nullable": "YES",
+      "key": "",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+    }
+  ],
+  "feedback_activation": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "program",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "semester",
+      "type": "int",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "is_activated",
+      "type": "tinyint(1)",
+      "nullable": "YES",
+      "key": "MUL",
+      "default": "0",
+      "extra": ""
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp",
+      "nullable": "YES",
+      "key": "",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED"
+    },
+    {
+      "name": "updated_at",
+      "type": "timestamp",
+      "nullable": "YES",
+      "key": "",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+    }
+  ],
+  "file_locations": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "file_name",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "almirah_name",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "additional_information",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp",
+      "nullable": "NO",
+      "key": "",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED"
+    },
+    {
+      "name": "updated_at",
+      "type": "timestamp",
+      "nullable": "NO",
+      "key": "",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+    }
+  ],
+  "marks": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "comments",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "entered_by",
+      "type": "bigint",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "exam_type",
+      "type": "enum('MIDTERM','FINAL','QUIZ','INTERNAL','ASSIGNMENT')",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "grade",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "marks",
+      "type": "decimal(38,2)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "percentage",
+      "type": "decimal(38,2)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "total_marks",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "updated_at",
+      "type": "datetime(6)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "student_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "subject_id",
+      "type": "bigint",
+      "nullable": "YES",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "teacher_id",
+      "type": "bigint",
+      "nullable": "YES",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "user_id",
+      "type": "bigint",
+      "nullable": "YES",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "course_id",
+      "type": "bigint",
+      "nullable": "YES",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "assignment_marks",
+      "type": "decimal(38,2)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "obtained_assignment_marks",
+      "type": "decimal(38,2)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "obtained_semester_marks",
+      "type": "decimal(38,2)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "obtained_sessional_marks",
+      "type": "decimal(38,2)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "semester_marks",
+      "type": "decimal(38,2)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "sessional_marks",
+      "type": "decimal(38,2)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "mark_type",
+      "type": "enum('ADMIN','TEACHER')",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "passing_status",
+      "type": "enum('BACKPAPER','FAIL','PASS')",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "semester_name",
+      "type": "varchar(100)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "admin_id",
+      "type": "bigint",
+      "nullable": "YES",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "program_id",
+      "type": "bigint",
+      "nullable": "YES",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "notification_replies": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "reply_content",
+      "type": "text",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "notification_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "reply_by",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "notifications": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "allowed_roles",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "allowed_user_ids",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "content",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "is_active",
+      "type": "bit(1)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "title",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "updated_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "visibility",
+      "type": "enum('PRIVATE','PUBLIC','RESTRICTED')",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "created_by",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "password_reset_tokens": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "expiry_time",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "token",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "UNI",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "used",
+      "type": "bit(1)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "user_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "programs": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "name",
+      "type": "varchar(100)",
+      "nullable": "NO",
+      "key": "UNI",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "semester_count",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": "6",
+      "extra": ""
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "is_active",
+      "type": "tinyint(1)",
+      "nullable": "YES",
+      "key": "",
+      "default": "1",
+      "extra": ""
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp",
+      "nullable": "YES",
+      "key": "",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED"
+    },
+    {
+      "name": "updated_at",
+      "type": "timestamp",
+      "nullable": "YES",
+      "key": "",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+    }
+  ],
+  "project_documents": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "document_name",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "document_path",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "file_size",
+      "type": "bigint",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "updated_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "upload_date",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "uploaded_by",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "allocation_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "uploaded_by_user",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "document_title",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "visibility",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "project_messages": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "message_text",
+      "type": "text",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "sender_role",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "allocation_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "sender_user_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "reports": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "report_code",
+      "type": "varchar(50)",
+      "nullable": "NO",
+      "key": "UNI",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "report_name",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "report_type",
+      "type": "enum('ATTENDANCE','ACADEMIC','DOCUMENT','STUDENT','TEACHER')",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "generated_by",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "generated_date",
+      "type": "timestamp",
+      "nullable": "YES",
+      "key": "MUL",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED"
+    },
+    {
+      "name": "report_data",
+      "type": "longtext",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "is_automated",
+      "type": "tinyint(1)",
+      "nullable": "YES",
+      "key": "",
+      "default": "0",
+      "extra": ""
+    },
+    {
+      "name": "schedule_cron",
+      "type": "varchar(100)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp",
+      "nullable": "YES",
+      "key": "",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED"
+    }
+  ],
+  "routines": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "academic_year",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "description",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "download_count",
+      "type": "int",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "file_name",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "file_path",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "file_size",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "file_type",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "semester",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "updated_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "teacher_id",
+      "type": "bigint",
+      "nullable": "YES",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "uploaded_by",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "course",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "student_performance": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "assignments_completed",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "assignments_pending",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "attendance_percentage",
+      "type": "decimal(38,2)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "average_score",
+      "type": "decimal(38,2)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "last_updated",
+      "type": "datetime(6)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "overall_gpa",
+      "type": "decimal(38,2)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "performance_level",
+      "type": "enum('EXCELLENT','GOOD','NEEDS_IMPROVEMENT','SATISFACTORY')",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "total_assignments",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "total_marks",
+      "type": "decimal(38,2)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "student_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "UNI",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "user_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "students": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "user_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "UNI",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "student_id",
+      "type": "varchar(50)",
+      "nullable": "NO",
+      "key": "UNI",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "enrollment_number",
+      "type": "varchar(50)",
+      "nullable": "NO",
+      "key": "UNI",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "contact_no",
+      "type": "varchar(20)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "department",
+      "type": "varchar(100)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "course",
+      "type": "varchar(100)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "semester",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "attendance_percentage",
+      "type": "float",
+      "nullable": "YES",
+      "key": "",
+      "default": "0",
+      "extra": ""
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp",
+      "nullable": "YES",
+      "key": "",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED"
+    },
+    {
+      "name": "updated_at",
+      "type": "timestamp",
+      "nullable": "YES",
+      "key": "",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+    },
+    {
+      "name": "program",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "custom_fields",
+      "type": "longtext",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "subject_enrollment": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "student_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "subject_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "enrollment_date",
+      "type": "timestamp",
+      "nullable": "YES",
+      "key": "",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED"
+    },
+    {
+      "name": "is_active",
+      "type": "bit(1)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "subjects": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "subject_code",
+      "type": "varchar(50)",
+      "nullable": "NO",
+      "key": "UNI",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "subject_name",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "teacher_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "semester",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "credits",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "course",
+      "type": "varchar(100)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp",
+      "nullable": "YES",
+      "key": "",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED"
+    }
+  ],
+  "supervisor_allocations": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "allocation_date",
+      "type": "datetime(6)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "updated_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "student_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "teacher_id",
+      "type": "bigint",
+      "nullable": "YES",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "allocation_type",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "guide_department",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "guide_name",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "specialization",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "project_description",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "project_title",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "syllabus": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "description",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "file_content",
+      "type": "longblob",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "file_name",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "file_size",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "file_type",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "program",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "semester",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "uploaded_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "subject_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "uploaded_by",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "teacher_details": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "academic_contribution",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "administrative_responsibilities",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "book_chapters_json",
+      "type": "longtext",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "books_authored_json",
+      "type": "longtext",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "certifications_json",
+      "type": "longtext",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "conference_presentation_json",
+      "type": "longtext",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "custom_fields_json",
+      "type": "longtext",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "date_of_birth",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "education_json",
+      "type": "longtext",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "invited_talk_json",
+      "type": "longtext",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "journal_publications_json",
+      "type": "longtext",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "patents_json",
+      "type": "longtext",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "profile_picture",
+      "type": "longblob",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "profile_picture_type",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "projects_json",
+      "type": "longtext",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "resume",
+      "type": "longblob",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "resume_type",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "skills_abilities",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "updated_at",
+      "type": "datetime(6)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "work_experiences_json",
+      "type": "longtext",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "teacher_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "UNI",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "teacher_feedback": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "student_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "teacher_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "subject_id",
+      "type": "bigint",
+      "nullable": "YES",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "program",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "semester",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "teaching_quality",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "communication",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "availability",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "course_content",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "overall_rating",
+      "type": "decimal(38,2)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "comments",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "positive_aspects",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "areas_for_improvement",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp",
+      "nullable": "YES",
+      "key": "MUL",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED"
+    },
+    {
+      "name": "updated_at",
+      "type": "timestamp",
+      "nullable": "YES",
+      "key": "",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+    },
+    {
+      "name": "is_anonymous",
+      "type": "tinyint(1)",
+      "nullable": "YES",
+      "key": "",
+      "default": "1",
+      "extra": ""
+    },
+    {
+      "name": "is_deleted",
+      "type": "bit(1)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "teacher_performance": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "avg_grading_time",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "created_at",
+      "type": "datetime(6)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "last_evaluation_date",
+      "type": "datetime(6)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "performance_rating",
+      "type": "decimal(38,2)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "students_engaged",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "total_assignments_given",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "total_attendance_marked",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "total_classes",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "total_submissions_graded",
+      "type": "int",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "updated_at",
+      "type": "datetime(6)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "teacher_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "UNI",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "user_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "teachers": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "user_id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "UNI",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "employee_id",
+      "type": "varchar(50)",
+      "nullable": "NO",
+      "key": "UNI",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "department",
+      "type": "varchar(100)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "specialization",
+      "type": "varchar(100)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "subjects_handled",
+      "type": "text",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp",
+      "nullable": "YES",
+      "key": "",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED"
+    },
+    {
+      "name": "updated_at",
+      "type": "timestamp",
+      "nullable": "YES",
+      "key": "",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+    },
+    {
+      "name": "certification",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "contact_number",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "date_of_birth",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "qualification",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "subject",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "teacher_id",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "UNI",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "designation",
+      "type": "varchar(255)",
+      "nullable": "YES",
+      "key": "",
+      "default": null,
+      "extra": ""
+    }
+  ],
+  "users": [
+    {
+      "name": "id",
+      "type": "bigint",
+      "nullable": "NO",
+      "key": "PRI",
+      "default": null,
+      "extra": "auto_increment"
+    },
+    {
+      "name": "email",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "UNI",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "password",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "full_name",
+      "type": "varchar(255)",
+      "nullable": "NO",
+      "key": "",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "role",
+      "type": "enum('STUDENT','TEACHER','ADMIN')",
+      "nullable": "NO",
+      "key": "MUL",
+      "default": null,
+      "extra": ""
+    },
+    {
+      "name": "is_active",
+      "type": "tinyint(1)",
+      "nullable": "YES",
+      "key": "",
+      "default": "1",
+      "extra": ""
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp",
+      "nullable": "YES",
+      "key": "",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED"
+    },
+    {
+      "name": "updated_at",
+      "type": "timestamp",
+      "nullable": "YES",
+      "key": "",
+      "default": "CURRENT_TIMESTAMP",
+      "extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+    }
+  ]
+}

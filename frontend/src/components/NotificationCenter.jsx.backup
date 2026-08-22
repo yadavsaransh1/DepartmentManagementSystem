@@ -1,0 +1,842 @@
+import React, { useState, useEffect } from 'react';
+import { apiFetch } from '../utils/apiClient';
+import '../styles/NotificationCenter.css';
+
+const NotificationCenter = () => {
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  const [notifications, setNotifications] = useState([]);
+  const [selectedNotif, setSelectedNotif] = useState(null);
+  const [replies, setReplies] = useState([]);
+  const [replyText, setReplyText] = useState('');
+  const [replyFile, setReplyFile] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [showCreateForm, setShowCreateForm] = useState(false);
+  const [message, setMessage] = useState('');
+  const [messageType, setMessageType] = useState('');
+  
+  // For role/user selection
+  const [teachers, setTeachers] = useState([]);
+  const [programs, setPrograms] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
+  const [selectedTeachers, setSelectedTeachers] = useState(new Set());
+  const [selectedPrograms, setSelectedPrograms] = useState(new Set());
+  const [selectedSemesters, setSelectedSemesters] = useState(new Set());
+  const [selectedUsers, setSelectedUsers] = useState(new Set());
+  const [userSearchTerm, setUserSearchTerm] = useState('');
+  const [selectedRoleType, setSelectedRoleType] = useState('');
+  
+  const [expandedProgram, setExpandedProgram] = useState(null);
+  const [programSemesters, setProgramSemesters] = useState({}); // Map of programId -> semesters array
+  
+  const [loadingUsers, setLoadingUsers] = useState(false);
+  const [createFormData, setCreateFormData] = useState({
+    title: '',
+    content: '',
+    visibility: 'PUBLIC',
+    allowedRoles: '',
+    allowedUserEmails: ''
+  });
+
+  useEffect(() => {
+    fetchNotifications();
+    fetchTeachers();
+    fetchPrograms();
+    fetchAllUsers();
+  }, [user.email]);
+
+  const fetchNotifications = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/notifications/visible/${user.email}`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setNotifications(data);
+      }
+    } catch (error) {
+      console.error('Error fetching notifications:', error);
+    }
+  };
+
+  const fetchReplies = async (notificationId) => {
+    try {
+      const response = await fetch(
+        `${API_BASE_URL}/api/notification-replies/notification/${notificationId}`,
+        {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        setReplies(data);
+      }
+    } catch (error) {
+      console.error('Error fetching replies:', error);
+    }
+  };
+  const fetchSemestersForProgram = async (programId) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/programs/${programId}/semesters`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+
+      if (response.ok) {
+        const semesterList = await response.json();
+        setProgramSemesters(prev => ({
+          ...prev,
+          [programId]: Array.isArray(semesterList) ? semesterList : []
+        }));
+      }
+    } catch (error) {
+      console.error(`Error fetching semesters for program ${programId}:`, error);
+      setProgramSemesters(prev => ({
+        ...prev,
+        [programId]: []
+      }));
+    }
+  };
+  const fetchTeachers = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/teachers`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setTeachers(Array.isArray(data) ? data : []);
+      }
+    } catch (error) {
+      console.error('Error fetching teachers:', error);
+    }
+  };
+
+  const fetchPrograms = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/programs`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+
+      if (response.ok) {
+        let data = await response.json();
+        data = Array.isArray(data) ? data : [];
+        setPrograms(data);
+      }
+    } catch (error) {
+      console.error('Error fetching programs:', error);
+      setPrograms([]);
+    }
+  };
+
+  const fetchAllUsers = async () => {
+    setLoadingUsers(true);
+    try {
+      const [studentsRes, teachersRes] = await Promise.all([
+        fetch(`${API_BASE_URL}/api/students`, {
+          headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+        }),
+        fetch(`${API_BASE_URL}/api/teachers`, {
+          headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+        })
+      ]);
+
+      let allUsers = [];
+      
+      if (studentsRes.ok) {
+        const students = await studentsRes.json();
+        if (Array.isArray(students)) {
+          allUsers = allUsers.concat(students.map(s => ({
+            id: s.id,
+            email: s.email,
+            fullName: s.fullName,
+            name: s.fullName,
+            type: 'STUDENT'
+          })));
+        }
+      }
+      
+      if (teachersRes.ok) {
+        const teachers = await teachersRes.json();
+        if (Array.isArray(teachers)) {
+          allUsers = allUsers.concat(teachers.map(t => ({
+            id: t.id,
+            email: t.email,
+            fullName: t.fullName,
+            name: t.fullName,
+            type: 'TEACHER'
+          })));
+        }
+      }
+      
+      console.log('Fetched users from students and teachers:', allUsers);
+      console.log('User count:', allUsers.length);
+      setAllUsers(allUsers);
+    } catch (error) {
+      console.error('Error fetching users:', error);
+      setAllUsers([]);
+    } finally {
+      setLoadingUsers(false);
+    }
+  };
+
+  const handleSelectNotification = (notif) => {
+    setSelectedNotif(notif);
+    setReplyText('');
+    setReplyFile(null);
+    fetchReplies(notif.id);
+    
+    // Mark notification as read - this removes the red dot
+    if (!notif.isRead) {
+      markNotificationAsRead(notif.id);
+    }
+    // after marking read
+    if (window.refreshUnreadNotifications) {
+      window.refreshUnreadNotifications();
+    }
+  };
+
+  const markNotificationAsRead = async (notifId) => {
+    try {
+      // Optionally mark as read on backend if you have that functionality
+      // For now, just update local state
+      setNotifications(prev => 
+        prev.map(n => n.id === notifId ? {...n, isRead: true} : n)
+      );
+    } catch (error) {
+      console.error('Error marking notification as read:', error);
+    }
+  };
+
+  const handleReplySubmit = async () => {
+    if (!replyText.trim() && !replyFile) {
+      setMessage('Please enter a reply or upload a file');
+      setMessageType('error');
+      return;
+    }
+
+    setLoading(true);
+    
+    try {
+      // Create FormData to send both text and file
+      const formData = new FormData();
+      formData.append('notificationId', selectedNotif.id);
+      formData.append('repliedByEmail', user.email);
+      formData.append('replyContent', replyText);
+      if (replyFile) {
+        formData.append('file', replyFile);
+      }
+
+      const response = await fetch(
+        `${API_BASE_URL}/api/notification-replies/create`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          },
+          body: formData
+        }
+      );
+
+      if (response.ok) {
+        setReplyText('');
+        setReplyFile(null);
+        fetchReplies(selectedNotif.id);
+        setMessage('Reply posted successfully');
+        setMessageType('success');
+        setTimeout(() => setMessage(''), 3000);
+      } else {
+        const errorData = await response.json().catch(() => ({}));
+        setMessage(errorData.message || 'Failed to post reply');
+        setMessageType('error');
+      }
+    } catch (error) {
+      console.error('Error posting reply:', error);
+      setMessage('Failed to post reply: ' + error.message);
+      setMessageType('error');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCreateNotification = async (e) => {
+    e.preventDefault();
+
+    if (user.role !== 'ADMIN' && user.role !== 'TEACHER') {
+      setMessage('Only admins and teachers can create notifications');
+      setMessageType('error');
+      return;
+    }
+
+    if (!createFormData.title.trim() || !createFormData.content.trim()) {
+      setMessage('Title and content are required');
+      setMessageType('error');
+      return;
+    }
+
+    // Validate restricted fields
+    if (createFormData.visibility === 'RESTRICTED' && !selectedRoleType) {
+      setMessage('Please select a role type for restricted visibility');
+      setMessageType('error');
+      return;
+    }
+
+    if (createFormData.visibility === 'PRIVATE' && selectedUsers.size === 0) {
+      setMessage('Please select at least one user for private visibility');
+      setMessageType('error');
+      return;
+    }
+
+    setLoading(true);
+    
+    // Build the appropriate allowedRoles/allowedUserEmails based on selection
+    let finalAllowedRoles = createFormData.allowedRoles;
+    let finalAllowedUserEmails = createFormData.allowedUserEmails;
+
+    if (createFormData.visibility === 'RESTRICTED' && selectedRoleType === 'TEACHER') {
+      finalAllowedRoles = 'TEACHER';
+    } else if (createFormData.visibility === 'RESTRICTED' && selectedRoleType === 'STUDENT') {
+      finalAllowedRoles = 'STUDENT';
+    }
+
+    const params = new URLSearchParams({
+      title: createFormData.title,
+      content: createFormData.content,
+      createdByEmail: user.email,
+      visibility: createFormData.visibility,
+      allowedRoles: finalAllowedRoles || '',
+      allowedUserEmails: finalAllowedUserEmails || ''
+    });
+
+    try {
+      const response = await fetch(
+        `${API_BASE_URL}/api/notifications/create?${params.toString()}`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+      );
+
+      if (response.ok) {
+        const newNotif = await response.json();
+        setNotifications(prev => [newNotif, ...prev]);
+        setCreateFormData({
+          title: '',
+          content: '',
+          visibility: 'PUBLIC',
+          allowedRoles: '',
+          allowedUserEmails: ''
+        });
+        setSelectedRoleType('');
+        setSelectedTeachers(new Set());
+        setSelectedPrograms(new Set());
+        setSelectedSemesters(new Set());
+        setSelectedUsers(new Set());
+        setUserSearchTerm('');
+        setShowCreateForm(false);
+        setMessage('Notification created successfully');
+        setMessageType('success');
+      } else {
+        const errorData = await response.json().catch(() => ({}));
+        setMessage(errorData.message || 'Failed to create notification');
+        setMessageType('error');
+      }
+    } catch (error) {
+      console.error('Error creating notification:', error);
+      setMessage('Failed to create notification');
+      setMessageType('error');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDeleteNotification = async (notifId) => {
+    if (!window.confirm('Delete this notification?')) return;
+
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(
+        `${API_BASE_URL}/api/notifications/${notifId}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+
+      if (response.ok) {
+        fetchNotifications(); // Refresh notifications list
+        setSelectedNotif(null);
+        setReplies([]);
+        setMessage('Notification deleted successfully');
+        setMessageType('success');
+      } else {
+        const errorData = await response.json().catch(() => ({}));
+        setMessage(errorData.message || `Failed to delete notification: ${response.status}`);
+        setMessageType('error');
+        console.error('Delete failed:', response.status, errorData);
+      }
+    } catch (error) {
+      console.error('Error deleting notification:', error);
+      setMessage('Error deleting notification: ' + error.message);
+      setMessageType('error');
+    }
+  };
+
+  return (
+    <div className="notification-center">
+      <div className="notif-header">
+        <h2>Notifications</h2>
+        {(user.role === 'ADMIN' || user.role === 'TEACHER') && (
+          <button
+            onClick={() => setShowCreateForm(!showCreateForm)}
+            className="btn-new-notif"
+          >
+            {showCreateForm ? 'Cancel' : '+ New Notification'}
+          </button>
+        )}
+      </div>
+
+      {message && (
+        <div className={`message ${messageType}`}>
+          {message}
+        </div>
+      )}
+
+      {showCreateForm && (user.role === 'ADMIN' || user.role === 'TEACHER') && (
+        <div className="create-notif-form">
+          <h3>Create New Notification</h3>
+          <form onSubmit={handleCreateNotification}>
+            <div className="form-group">
+              <label htmlFor="title">Title *</label>
+              <input
+                type="text"
+                id="title"
+                value={createFormData.title}
+                onChange={(e) => setCreateFormData(prev => ({ ...prev, title: e.target.value }))}
+                placeholder="Notification title"
+                disabled={loading}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="content">Content *</label>
+              <textarea
+                id="content"
+                value={createFormData.content}
+                onChange={(e) => setCreateFormData(prev => ({ ...prev, content: e.target.value }))}
+                placeholder="Notification content"
+                rows="4"
+                disabled={loading}
+              />
+            </div>
+
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="visibility">Visibility *</label>
+                <select
+                  id="visibility"
+                  value={createFormData.visibility}
+                  onChange={(e) => {
+                    setCreateFormData(prev => ({ ...prev, visibility: e.target.value }));
+                    setSelectedRoleType('');
+                    setSelectedTeachers(new Set());
+                    setSelectedPrograms(new Set());
+                    setSelectedSemesters(new Set());
+                    setSelectedUsers(new Set());
+                  }}
+                  disabled={loading}
+                >
+                  <option value="PUBLIC">Public (Everyone)</option>
+                  <option value="RESTRICTED">Restricted (Specific Roles)</option>
+                  <option value="PRIVATE">Private (Specific Users)</option>
+                </select>
+              </div>
+
+              {createFormData.visibility === 'RESTRICTED' && (
+                <div className="form-group">
+                  <label>Select Role Type *</label>
+                  <select
+                    value={selectedRoleType}
+                    onChange={(e) => {
+                      setSelectedRoleType(e.target.value);
+                      setSelectedTeachers(new Set());
+                      setSelectedPrograms(new Set());
+                      setSelectedSemesters(new Set());
+                    }}
+                    disabled={loading}
+                    style={{width: '100%', padding: '8px', marginBottom: '10px'}}
+                  >
+                    <option value="">-- Select Role Type --</option>
+                    <option value="TEACHER">Teachers</option>
+                    <option value="STUDENT">Students (by Program & Semester)</option>
+                  </select>
+
+                  {selectedRoleType === 'TEACHER' && teachers.length > 0 && (
+                    <div style={{border: '1px solid #ddd', borderRadius: '4px', padding: '10px', maxHeight: '200px', overflowY: 'auto', backgroundColor: '#f9f9f9'}}>
+                      <div style={{display: 'flex', gap: '5px', marginBottom: '10px'}}>
+                        <button
+                          type="button"
+                          onClick={() => setSelectedTeachers(new Set(teachers.map(t => t.id)))}
+                          style={{padding: '4px 8px', fontSize: '11px', backgroundColor: '#667eea', color: 'white', border: 'none', cursor: 'pointer', borderRadius: '3px'}}
+                        >
+                          Select All
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setSelectedTeachers(new Set())}
+                          style={{padding: '4px 8px', fontSize: '11px', backgroundColor: '#f44336', color: 'white', border: 'none', cursor: 'pointer', borderRadius: '3px'}}
+                        >
+                          Deselect All
+                        </button>
+                      </div>
+                      {teachers.map(teacher => (
+                        <label key={teacher.id} style={{display: 'flex', alignItems: 'center', marginBottom: '6px', cursor: 'pointer', fontSize: '13px'}}>
+                          <input
+                            type="checkbox"
+                            checked={selectedTeachers.has(teacher.id)}
+                            onChange={(e) => {
+                              const newSelected = new Set(selectedTeachers);
+                              if (e.target.checked) {
+                                newSelected.add(teacher.id);
+                              } else {
+                                newSelected.delete(teacher.id);
+                              }
+                              setSelectedTeachers(newSelected);
+                              // Update allowedRoles with TEACHER role
+                              setCreateFormData(prev => ({...prev, allowedRoles: 'TEACHER'}));
+                            }}
+                            style={{marginRight: '8px', width: '14px', height: '14px', cursor: 'pointer'}}
+                          />
+                          {teacher.fullName || teacher.user?.fullName || `Teacher #${teacher.id}`}
+                        </label>
+                      ))}
+                      <div style={{marginTop: '8px', fontSize: '12px', color: '#666'}}>
+                        {selectedTeachers.size} teacher(s) selected
+                      </div>
+                    </div>
+                  )}
+
+                  {selectedRoleType === 'STUDENT' && programs.length > 0 && (
+                    <div style={{border: '1px solid #ddd', borderRadius: '4px', padding: '10px', maxHeight: '300px', overflowY: 'auto', backgroundColor: '#f9f9f9'}}>
+                      <p style={{margin: '0 0 10px 0', fontSize: '12px', fontWeight: 'bold', color: '#333'}}>Select Programs & Semesters:</p>
+                      {programs.map(program => (
+                        <div key={program.id} style={{marginBottom: '10px', padding: '8px', backgroundColor: 'white', borderRadius: '3px'}}>
+                          <label style={{display: 'flex', alignItems: 'center', marginBottom: '6px', cursor: 'pointer', fontSize: '13px', fontWeight: 'bold'}}>
+                            <input
+                              type="checkbox"
+                              checked={selectedPrograms.has(program.id)}
+                              onChange={async (e) => {
+                                const newSelected = new Set(selectedPrograms);
+                                if (e.target.checked) {
+                                  newSelected.add(program.id);
+                                  // Fetch semesters for this program
+                                  await fetchSemestersForProgram(program.id);
+                                } else {
+                                  newSelected.delete(program.id);
+                                  // Clear expanded state if unchecked
+                                  if (expandedProgram === program.id) {
+                                    setExpandedProgram(null);
+                                  }
+                                }
+                                setSelectedPrograms(newSelected);
+                              }}
+                              style={{marginRight: '8px', width: '14px', height: '14px', cursor: 'pointer'}}
+                            />
+                            {program.name || program.programName}
+                            {programSemesters[program.id] && Array.isArray(programSemesters[program.id]) && programSemesters[program.id].length > 0 && (
+                              <button
+                                type="button"
+                                onClick={() => setExpandedProgram(expandedProgram === program.id ? null : program.id)}
+                                style={{
+                                  marginLeft: '8px',
+                                  padding: '2px 8px',
+                                  backgroundColor: '#667eea',
+                                  color: 'white',
+                                  border: 'none',
+                                  borderRadius: '3px',
+                                  cursor: 'pointer',
+                                  fontSize: '11px',
+                                  fontWeight: 'bold'
+                                }}
+                              >
+                                {expandedProgram === program.id ? '▼ Hide' : '▶ Show'} Semesters
+                              </button>
+                            )}
+                          </label>
+                          {expandedProgram === program.id && programSemesters[program.id] && Array.isArray(programSemesters[program.id]) && programSemesters[program.id].length > 0 && (
+                            <div style={{marginLeft: '22px', borderLeft: '2px solid #ddd', paddingLeft: '8px', marginTop: '8px'}}>
+                              {programSemesters[program.id].map(semNum => {
+                                const semId = `${program.id}:${semNum}`;
+                                return (
+                                  <label key={semId} style={{display: 'flex', alignItems: 'center', marginBottom: '4px', cursor: 'pointer', fontSize: '12px'}}>
+                                    <input
+                                      type="checkbox"
+                                      checked={selectedSemesters.has(semId) && selectedPrograms.has(program.id)}
+                                      onChange={(e) => {
+                                        // Only allow semester selection if program is checked
+                                        if (!selectedPrograms.has(program.id)) {
+                                          return;
+                                        }
+                                        const newSelected = new Set(selectedSemesters);
+                                        if (e.target.checked) {
+                                          newSelected.add(semId);
+                                        } else {
+                                          newSelected.delete(semId);
+                                        }
+                                        setSelectedSemesters(newSelected);
+                                      }}
+                                      disabled={!selectedPrograms.has(program.id)}
+                                      style={{marginRight: '6px', width: '13px', height: '13px', cursor: selectedPrograms.has(program.id) ? 'pointer' : 'not-allowed', opacity: selectedPrograms.has(program.id) ? 1 : 0.5}}
+                                    />
+                                    Semester {semNum}
+                                  </label>
+                                );
+                              })}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {createFormData.visibility === 'PRIVATE' && (
+                <div className="form-group">
+                  <label>Select Users *</label>
+                  <input
+                    type="text"
+                    placeholder="Search users (name or email)..."
+                    value={userSearchTerm}
+                    onChange={(e) => setUserSearchTerm(e.target.value)}
+                    disabled={loading || loadingUsers}
+                    style={{width: '100%', padding: '8px', marginBottom: '10px', border: '1px solid #ddd', borderRadius: '4px'}}
+                  />
+                  
+                  <div style={{border: '1px solid #ddd', borderRadius: '4px', padding: '10px', maxHeight: '250px', overflowY: 'auto', backgroundColor: '#f9f9f9'}}>
+                    {loadingUsers ? (
+                      <p style={{textAlign: 'center', color: '#999', fontSize: '12px', margin: '20px 0'}}>Loading users...</p>
+                    ) : allUsers && allUsers.length > 0 ? (
+                      <>
+                        <div style={{display: 'flex', gap: '5px', marginBottom: '10px'}}>
+                          <button
+                            type="button"
+                            onClick={() => setSelectedUsers(new Set(
+                              allUsers
+                                .filter(u => !userSearchTerm || (u.fullName && u.fullName.toLowerCase().includes(userSearchTerm.toLowerCase())) || (u.email && u.email.toLowerCase().includes(userSearchTerm.toLowerCase())) || (u.name && u.name.toLowerCase().includes(userSearchTerm.toLowerCase())))
+                                .map(u => u.email)
+                            ))}
+                            style={{padding: '4px 8px', fontSize: '11px', backgroundColor: '#667eea', color: 'white', border: 'none', cursor: 'pointer', borderRadius: '3px'}}
+                          >
+                            Select All
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setSelectedUsers(new Set())}
+                            style={{padding: '4px 8px', fontSize: '11px', backgroundColor: '#f44336', color: 'white', border: 'none', cursor: 'pointer', borderRadius: '3px'}}
+                          >
+                            Deselect All
+                          </button>
+                        </div>
+                        {allUsers
+                          .filter(u => {
+                            if (!userSearchTerm) return true;
+                            const searchLower = userSearchTerm.toLowerCase();
+                            return (u.fullName && u.fullName.toLowerCase().includes(searchLower)) || 
+                                   (u.email && u.email.toLowerCase().includes(searchLower)) ||
+                                   (u.name && u.name.toLowerCase().includes(searchLower));
+                          })
+                          .length > 0 ? (
+                          allUsers
+                            .filter(u => {
+                              if (!userSearchTerm) return true;
+                              const searchLower = userSearchTerm.toLowerCase();
+                              return (u.fullName && u.fullName.toLowerCase().includes(searchLower)) || 
+                                     (u.email && u.email.toLowerCase().includes(searchLower)) ||
+                                     (u.name && u.name.toLowerCase().includes(searchLower));
+                            })
+                            .map(u => (
+                              <label key={u.email} style={{display: 'flex', alignItems: 'center', marginBottom: '6px', cursor: 'pointer', fontSize: '13px'}}>
+                                <input
+                                  type="checkbox"
+                                  checked={selectedUsers.has(u.email)}
+                                  onChange={(e) => {
+                                    const newSelected = new Set(selectedUsers);
+                                    if (e.target.checked) {
+                                      newSelected.add(u.email);
+                                    } else {
+                                      newSelected.delete(u.email);
+                                    }
+                                    setSelectedUsers(newSelected);
+                                    setCreateFormData(prev => ({...prev, allowedUserEmails: Array.from(newSelected).join(',')}));
+                                  }}
+                                  style={{marginRight: '8px', width: '14px', height: '14px', cursor: 'pointer'}}
+                                />
+                                <span style={{flex: 1}}>
+                                  {u.fullName || u.name} 
+                                  <span style={{fontSize: '12px', color: '#666', marginLeft: '8px'}}>
+                                    ({u.email})
+                                  </span>
+                                </span>
+                              </label>
+                            ))
+                        ) : (
+                          <p style={{textAlign: 'center', color: '#999', fontSize: '12px', margin: '20px 0'}}>No users match your search</p>
+                        )}
+                      </>
+                    ) : (
+                      <p style={{textAlign: 'center', color: '#999', fontSize: '12px', margin: '20px 0'}}>No users available</p>
+                    )}
+                  </div>
+                  <div style={{marginTop: '8px', fontSize: '12px', color: '#666'}}>
+                    {selectedUsers.size} user(s) selected
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <button type="submit" disabled={loading} className="btn-create">
+              {loading ? 'Creating...' : 'Create Notification'}
+            </button>
+          </form>
+        </div>
+      )}
+
+      <div className="notif-container">
+        <div className="notif-list">
+          <h3>Messages ({notifications.length})</h3>
+          {notifications.length === 0 ? (
+            <p className="no-notif">No notifications</p>
+          ) : (
+            notifications.map(notif => (
+              <div
+                key={notif.id}
+                className={`notif-item ${selectedNotif?.id === notif.id ? 'active' : ''}`}
+                onClick={() => handleSelectNotification(notif)}
+              >
+                <h4>{notif.title}</h4>
+                <p className="notif-preview">{notif.content.substring(0, 60)}...</p>
+                <span className="notif-time">{notif.createdAt}</span>
+              </div>
+            ))
+          )}
+        </div>
+
+        <div className="notif-detail">
+          {selectedNotif ? (
+            <>
+              <div className="detail-header">
+                <h2>{selectedNotif.title}</h2>
+                {(user.role === 'ADMIN' || selectedNotif.createdByEmail === user.email) && (
+                  <button
+                    onClick={() => handleDeleteNotification(selectedNotif.id)}
+                    className="btn-delete"
+                  >
+                    Delete
+                  </button>
+                )}
+              </div>
+
+              <div className="detail-meta">
+                <p><strong>From:</strong> {selectedNotif.createdByName}</p>
+                <p><strong>Time:</strong> {selectedNotif.createdAt}</p>
+                <p><strong>Visibility:</strong> {selectedNotif.visibility}</p>
+              </div>
+
+              <div className="detail-content">
+                {selectedNotif.content}
+              </div>
+
+              <div className="replies-section">
+                <h3>Replies ({replies.length})</h3>
+                <div className="replies-list">
+                  {replies.length === 0 ? (
+                    <p className="no-replies">No replies yet</p>
+                  ) : (
+                    replies.map(reply => (
+                      <div key={reply.id} className="reply-item">
+                        <div className="reply-header">
+                          <strong>{reply.repliedByName}</strong>
+                          <span className="reply-role">{reply.repliedByRole}</span>
+                          <span className="reply-time">{reply.createdAt}</span>
+                        </div>
+                        <p className="reply-content">{reply.replyContent}</p>
+                        {reply.fileUrl && (
+                          <div style={{marginTop: '8px', padding: '8px', backgroundColor: '#f0f0f0', borderRadius: '4px'}}>
+                            <a 
+                              href={reply.fileUrl} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              style={{color: '#007bff', textDecoration: 'none', fontSize: '12px'}}
+                            >
+                              📎 Download Attachment: {reply.fileName || 'Document'}
+                            </a>
+                          </div>
+                        )}
+                      </div>
+                    ))
+                  )}
+                </div>
+
+                <div className="reply-form">
+                  <textarea
+                    value={replyText}
+                    onChange={(e) => setReplyText(e.target.value)}
+                    placeholder="Write your reply..."
+                    rows="3"
+                    disabled={loading}
+                  />
+                  <div style={{marginTop: '12px', marginBottom: '12px'}}>
+                    <label style={{fontSize: '12px', fontWeight: 'bold', display: 'block', marginBottom: '8px'}}>
+                      📎 Attach Document (Optional)
+                    </label>
+                    <input
+                      type="file"
+                      onChange={(e) => setReplyFile(e.target.files[0])}
+                      disabled={loading}
+                      style={{padding: '8px', border: '1px solid #ddd', borderRadius: '4px', width: '100%'}}
+                    />
+                    {replyFile && (
+                      <p style={{fontSize: '11px', color: '#666', marginTop: '6px'}}>
+                        Selected: {replyFile.name} ({(replyFile.size / 1024).toFixed(2)} KB)
+                      </p>
+                    )}
+                  </div>
+                  <button
+                    onClick={handleReplySubmit}
+                    disabled={loading}
+                    className="btn-reply"
+                  >
+                    {loading ? 'Posting...' : 'Post Reply'}
+                  </button>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="no-selection">
+              <p>Select a notification to view details</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default NotificationCenter;
+

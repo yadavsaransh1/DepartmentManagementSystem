@@ -1,0 +1,85 @@
+/* Marks Management Styles */
+.marks-container {
+  padding: 20px;
+  background: linear-gradient(135deg, #0093E9 0%, #80D0C7 100%);
+  min-height: 100vh;
+}
+
+.marks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.marks-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 28px;
+}
+
+.filter-section {
+  margin-bottom: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.filter-section select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  min-width: 200px;
+}
+
+.marks-table {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.marks-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.marks-table thead {
+  background: linear-gradient(135deg, #0093E9 0%, #80D0C7 100%);
+  color: white;
+}
+
+.marks-table th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.marks-table td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.marks-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.grade {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  color: white;
+  font-size: 14px;
+}
+
+.grade-a { background: #28a745; }
+.grade-b { background: #17a2b8; }
+.grade-c { background: #ffc107; color: #333; }
+.grade-d { background: #fd7e14; }
+.grade-f { background: #dc3545; }

@@ -1,0 +1,88 @@
+# Gitignore file for Department Management System
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+frontend/.env.*.local
+frontend/*.log
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.DS_Store
+frontend/.vscode/
+frontend/.idea/
+
+# Backend
+backend/target/
+backend/.classpath
+backend/.project
+backend/.settings/
+backend/.DS_Store
+backend/.env
+backend/src/main/resources/application-local.yml
+backend/*.log
+backend/.vscode/
+backend/.idea/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.iml
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Docker
+docker/.env
+docker/volumes/
+
+# Database
+database/backups/
+*.sql.backup
+
+# OS
+Thumbs.db
+.DS_Store
+.AppleDouble
+.LSOverlay
+
+# Build artifacts
+build/
+dist/
+*.jar
+*.war
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Node
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Temporary files
+temp/
+tmp/
+*.tmp
+*.swp
+
+# OS-specific
+.Thumbs.db
+.AppleDouble
+.LSOverlay
+*.sublime-workspace
+
+# Uploads (if stored in project)
+uploads/
+
+# Package lock (optional - for consistency)
+# package-lock.json
+# yarn.lock
