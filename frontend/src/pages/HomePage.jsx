@@ -241,7 +241,7 @@ const HomePage = () => {
     return (
       <div className="home-page">
         <div className="header">
-          <h1>Department Management System</h1>
+          <h1>Department Management System made by Saransh</h1>
           <button className="login-btn" onClick={handleLogin}>Login</button>
         </div>
         <div className="home-container">
