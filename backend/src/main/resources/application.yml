@@ -1,13 +1,13 @@
 spring:
   application:
     name: Department Management System
-  
+
   datasource:
-    url: jdbc:mysql://localhost:3306/university_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    username: root
-    password: yadavji
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
-  
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -20,26 +20,22 @@ spring:
           batch_size: 20
         order_inserts: true
         order_updates: true
-  
+
   mvc:
     cors:
       # CORS configuration is handled in SecurityConfig.java
-      # Disabled YAML CORS to avoid conflicts with Java DSL config
-  
+
   servlet:
     multipart:
       max-file-size: 50MB
       max-request-size: 50MB
 
 server:
-  port: 8080
-  address: localhost
-  servlet:
-    context-path: /
+  port: ${PORT:8080}
 
 jwt:
-  secret: your-secret-key-change-this-in-production-environment-very-long-and-secure-key
-  expiration: 86400000
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION:86400000}
 
 logging:
   level:
